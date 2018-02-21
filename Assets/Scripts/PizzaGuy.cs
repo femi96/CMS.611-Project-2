@@ -21,6 +21,8 @@ public class PizzaGuy : MonoBehaviour {
 
 	private CharacterController moveController;
 	private GameObject model;
+
+	private Vector3 fallMove = new Vector3(0, -0.1f, 0);
 	
 	// UI variables:
 	[Header("UI")]
@@ -72,6 +74,7 @@ public class PizzaGuy : MonoBehaviour {
 
 		if(Mathf.Abs(inputX) + Mathf.Abs(inputZ) > 0.1f) { model.transform.forward = moveDirection; }
 
+		moveDirection += fallMove;
 		moveController.Move(moveDirection);
 	}
 }
