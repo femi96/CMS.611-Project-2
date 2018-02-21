@@ -28,6 +28,7 @@ public class PizzaGuy : MonoBehaviour {
 	[Header("UI")]
 	public Text timer;
 
+
 	void Awake () {
 
 		// Get movement componenets

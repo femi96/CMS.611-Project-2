@@ -13,6 +13,8 @@ public class EnemySpawner : MonoBehaviour {
 	public int spawnIndex = 0;
 	public Transform[] spawnLocations;
 	public GameObject enemyPrefab;
+	public GameObject pizzaGuy;
+
 
 	void Start () {
 
@@ -31,6 +33,8 @@ public class EnemySpawner : MonoBehaviour {
 		go.transform.parent = transform;
 
 		go.transform.position = spawnLocations[spawnIndex].position;
+
+		go.GetComponent<Enemy>().target = pizzaGuy;
 
 		spawnIndex += 1;
 		if(spawnIndex >= spawnLocations.Length) { spawnIndex = 0; }

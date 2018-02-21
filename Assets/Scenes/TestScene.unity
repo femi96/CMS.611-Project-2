@@ -164,6 +164,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4384912799412594, guid: 0033f1dcecab54e449d3e44363feb214,
     type: 2}
   m_PrefabInternal: {fileID: 149028774}
+--- !u!1 &164619834 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1352831205728492, guid: 29d8c3cfbc6d651479ba78a7ecd14731,
+    type: 2}
+  m_PrefabInternal: {fileID: 1021045257}
 --- !u!1 &292682100
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +603,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1122893842719674, guid: bc72939ba1c9560488e605241ea5f6cc,
         type: 2}
+    - target: {fileID: 114814720304661872, guid: b29482e784e0ca04d810d6d2e1334595,
+        type: 2}
+      propertyPath: pizzaGuy
+      value: 
+      objectReference: {fileID: 164619834}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b29482e784e0ca04d810d6d2e1334595, type: 2}
   m_IsPrefabParent: 0
