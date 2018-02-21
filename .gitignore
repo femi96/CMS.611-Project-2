@@ -21,3 +21,4 @@ Thumbs.db
 *.sln
 *.sublime-workspace
 *.sublime-project
+*.csproj
