@@ -647,6 +647,7 @@ MonoBehaviour:
   - {fileID: 4616580126152522}
   - {fileID: 4436472945996500}
   - {fileID: 4830089876784734}
+  gunName: Shotgun
   bulletSpeed: 10
   capacity: 10
   ammo: 0
@@ -692,6 +693,7 @@ MonoBehaviour:
     type: 2}
   bulletSpawns:
   - {fileID: 4210117205824318}
+  gunName: Revolver
   bulletSpeed: 6
   capacity: 6
   ammo: 0

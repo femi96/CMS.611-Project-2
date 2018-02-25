@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public Transform[] bulletSpawns;
 
+	public string gunName;
+
 	public float bulletSpeed;
 
 	public int capacity;
@@ -15,11 +17,11 @@ public class Gun : MonoBehaviour {
 	public float reloadTime;
 	public float time;
 
-	void Start () {
+	void Start() {
 		ammo = capacity;
 	}
 	
-	void Update () {
+	void Update() {
 		
 	}
 	
