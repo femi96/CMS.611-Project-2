@@ -14,6 +14,7 @@ public class PizzaGuy : MonoBehaviour {
 
 	public int score;
 	public int pizzaCount;
+	public int pizzasInPlay;
 
 	// Movement variables:
 	[Header("Movement")]
@@ -104,6 +105,14 @@ public class PizzaGuy : MonoBehaviour {
 		moveController.Move(moveDirection);
 	}
 
+	public bool CanPizza(int pizzaLimit) {
+		return pizzasInPlay < pizzaLimit;
+	}
+
+	public void SpawnedPizza() {
+		pizzasInPlay += 1;
+	}
+
 	public void PickUp() {
 		pizzaCount += 1;
 	}
@@ -114,6 +123,7 @@ public class PizzaGuy : MonoBehaviour {
 
 	public void Delivered() {
 		pizzaCount -= 1;
+		pizzasInPlay -= 1;
 		score += 1;
 	}
 
