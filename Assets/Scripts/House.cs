@@ -6,7 +6,7 @@ public class House : MonoBehaviour {
 
 	public PizzaGuy pizzaGuy;
 
-	public static float deliverDistance = 2.0f;
+	public static float deliverDistance = 1.0f;
 
 	void Update() {
 
@@ -15,7 +15,6 @@ public class House : MonoBehaviour {
 
 			if(pizzaGuy.CanDeliver()) {
 				pizzaGuy.Delivered();
-				Destroy(gameObject);
 			}
 		}
 	}

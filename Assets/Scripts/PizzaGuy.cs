@@ -15,8 +15,6 @@ public class PizzaGuy : MonoBehaviour {
 	public int score;
 	public int pizzaCount;
 	public int pizzasInPlay;
-	public int houseCount;
-	public int housesInPlay;
 
 	// Movement variables:
 	[Header("Movement")]
@@ -102,16 +100,8 @@ public class PizzaGuy : MonoBehaviour {
 		return pizzasInPlay < pizzaLimit;
 	}
 
-	public bool CanHouse(int houseLimit) {
-		return housesInPlay < houseLimit;
-	}
-
 	public void SpawnedPizza() {
 		pizzasInPlay += 1;
-	}
-
-	public void SpawnedHouse() {
-		housesInPlay += 1;
 	}
 
 	public void PickUp() {
@@ -125,8 +115,6 @@ public class PizzaGuy : MonoBehaviour {
 	public void Delivered() {
 		pizzaCount -= 1;
 		pizzasInPlay -= 1;
-		houseCount -= 1;
-		housesInPlay -= 1;
 		score += 1;
 	}
 
