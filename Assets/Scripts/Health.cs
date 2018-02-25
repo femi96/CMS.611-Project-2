@@ -10,11 +10,28 @@ public class Health : MonoBehaviour {
 	public bool destroyOnDeath;
 	public bool dead = false;
 
+	float regenTime = 0;
+
+	void Update() {
+
+		if(!dead) {
+			regenTime += Time.deltaTime;
+			if(regenTime > 2) {
+				currentHealth += 1;
+				if(currentHealth > maxHealth) {
+					currentHealth = maxHealth;
+				}
+				regenTime -= 1;
+			}
+		}
+	}
+
 	public void TakeDamage(int amount) {
 
 		currentHealth -= amount;
 		if (currentHealth <= 0) {
 			currentHealth = 0;
+			regenTime = 0;
 			dead = true;
 
 			if(destroyOnDeath) {

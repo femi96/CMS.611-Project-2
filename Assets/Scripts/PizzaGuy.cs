@@ -16,6 +16,9 @@ public class PizzaGuy : MonoBehaviour {
 	public int pizzaCount;
 	public int pizzasInPlay;
 
+	private float swipeTime;
+	private float swipeTimeout = 1;
+
 	// Movement variables:
 	[Header("Movement")]
 	public float speed = 4f;
@@ -26,7 +29,7 @@ public class PizzaGuy : MonoBehaviour {
 	private CharacterController moveController;
 	private GameObject model;
 
-	private Vector3 fallMove = new Vector3(0, -0.1f, 0);
+	private Vector3 fallMove = new Vector3(0, -5f, 0);
 
 	// Gun variables:
 	[Header("Gun")]
@@ -42,6 +45,9 @@ public class PizzaGuy : MonoBehaviour {
 
 	public GameObject reloadUI;
 	public GameObject switchUI;
+
+	public Text healthText;
+	public GameObject healthBar;
 
 	public GameObject[] pizzaStacks;
 	public GameObject[] pizzaStacksUI;
@@ -83,6 +89,8 @@ public class PizzaGuy : MonoBehaviour {
 		time -= Time.deltaTime;
 		if(time < 0) { time = 0; }
 
+		swipeTime += Time.deltaTime;
+
 		timer.text = Mathf.CeilToInt(time).ToString();
 		scoreText.text = "$"+Mathf.CeilToInt(score*5).ToString();
 		ammoText.text = guns[currentGunIndex].GetAmmoText();
@@ -90,6 +98,10 @@ public class PizzaGuy : MonoBehaviour {
 
 		reloadUI.SetActive(!guns[currentGunIndex].CanShoot());
 		switchUI.SetActive(pizzaCount <= 0);
+
+		int health = gameObject.GetComponent<Health>().currentHealth;
+		healthText.text = health.ToString() + "%";
+		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(3*health, 100);
 
 		int count = 0;
 		foreach(GameObject pizzaStack in pizzaStacks) {
@@ -115,11 +127,11 @@ public class PizzaGuy : MonoBehaviour {
 
 		Vector3 moveDirection = new Vector3(inputX, 0, inputZ);
 		moveDirection *= speed;
-		moveDirection *= Time.deltaTime;
 
 		if(Mathf.Abs(inputX) + Mathf.Abs(inputZ) > 0.1f) { model.transform.forward = moveDirection; }
 
 		moveDirection += fallMove;
+		moveDirection *= Time.deltaTime;
 		moveController.Move(moveDirection);
 	}
 
@@ -168,6 +180,19 @@ public class PizzaGuy : MonoBehaviour {
 			} else {
 				gun.gameObject.SetActive(false);
 			}
+		}
+	}
+
+	public void Swipe(Vector3 pos) {
+
+		if(swipeTime >= swipeTimeout) {
+
+			gameObject.GetComponent<Health>().TakeDamage(35);
+			swipeTime = 0;
+
+			Vector3 knockback = transform.position - pos;
+			knockback = knockback.normalized * 0.5f;
+			moveController.Move(knockback);
 		}
 	}
 }

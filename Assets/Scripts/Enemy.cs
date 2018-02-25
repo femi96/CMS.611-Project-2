@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour {
 	[Header("Enemy")]
 	public GameObject target;
 
+	public static float swipeDistance = 1.0f;
+
 	// Movement variables:
 	[Header("Movement")]
 	public float speed = 2f;
@@ -17,7 +19,7 @@ public class Enemy : MonoBehaviour {
 	private CharacterController moveController;
 	private GameObject model;
 
-	private Vector3 fallMove = new Vector3(0, -0.1f, 0);
+	private Vector3 fallMove = new Vector3(0, -5f, 0);
 
 
 	void Awake () {
@@ -26,14 +28,23 @@ public class Enemy : MonoBehaviour {
 		moveController = GetComponent<CharacterController>();
 		model = transform.Find("Model").gameObject;
 	}
-
-	void Start () {}
 	
 	void Update () {
 		// Called every frame
 
 		// Movement updates
 		MoveUpdate();
+
+		// Enemy updates
+		PizzaGuy pizzaGuy = target.GetComponent<PizzaGuy>();
+		if(pizzaGuy != null) {
+
+			float guyDist = pizzaGuy.DistanceTo(transform.position);
+			if(guyDist <= swipeDistance) {
+
+				pizzaGuy.Swipe(transform.position);
+			}
+		}
 	}
 
 	// Moves enemy each frame
@@ -47,11 +58,11 @@ public class Enemy : MonoBehaviour {
 		}
 
 		moveDirection *= speed;
-		moveDirection *= Time.deltaTime;
 
 		model.transform.forward = moveDirection;
 
 		moveDirection += fallMove;
+		moveDirection *= Time.deltaTime;
 		moveController.Move(moveDirection);
 	}
 }

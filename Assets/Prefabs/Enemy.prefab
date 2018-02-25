@@ -86,7 +86,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4858713329584630}
   - component: {fileID: 33908481296765570}
-  - component: {fileID: 65266906547245998}
   - component: {fileID: 23614947064919692}
   m_Layer: 0
   m_Name: ArmR
@@ -121,7 +120,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4324046548120140}
   - component: {fileID: 33819666951161268}
-  - component: {fileID: 65688134657903104}
   - component: {fileID: 23714908461963600}
   m_Layer: 0
   m_Name: ArmL
@@ -391,30 +389,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1823944947414162}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65266906547245998
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1823944947414162}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65688134657903104
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1981152365793862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!108 &108451534687388860
 Light:
   m_ObjectHideFlags: 1
