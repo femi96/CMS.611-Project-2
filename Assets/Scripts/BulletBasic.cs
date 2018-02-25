@@ -6,9 +6,10 @@ public class BulletBasic : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 
-		var hit = collision.gameObject;
-		var health = hit.GetComponent<Health>();
-		if (health != null) {
+		GameObject hit = collision.gameObject;
+		Health health = hit.GetComponent<Health>();
+
+		if(health != null) {
 			health.TakeDamage(100);
 		}
 

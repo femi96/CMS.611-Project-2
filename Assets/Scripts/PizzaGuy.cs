@@ -13,6 +13,7 @@ public class PizzaGuy : MonoBehaviour {
 	public float matchTime = 100;
 
 	public int score;
+	public int pizzaCount;
 
 	// Movement variables:
 	[Header("Movement")]
@@ -26,7 +27,7 @@ public class PizzaGuy : MonoBehaviour {
 
 	// Gun variables:
 	[Header("Gun")]
-	private GameObject currentGun;
+	public GameObject currentGun;
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
 	public GameObject pelletPrefab;
@@ -39,6 +40,7 @@ public class PizzaGuy : MonoBehaviour {
 	// UI variables:
 	[Header("UI")]
 	public Text timer;
+	public Text scoreText;
 
 
 	void Awake () {
@@ -46,13 +48,13 @@ public class PizzaGuy : MonoBehaviour {
 		// Get movement componenets
 		moveController = GetComponent<CharacterController>();
 		model = transform.Find("Model").gameObject;
-		currentGun = model.transform.Find("Revolver").gameObject;
 	}
 
 	void Start () {
 
 		// Set game variables to starting value
 		time = matchTime;
+		score = 0;
 	}
 	
 	void Update () {
@@ -81,6 +83,7 @@ public class PizzaGuy : MonoBehaviour {
 		if(time < 0) { time = 0; }
 
 		timer.text = Mathf.CeilToInt(time).ToString();
+		scoreText.text = Mathf.CeilToInt(score).ToString();
 	}
 
 	// Moves pizzaguy each frame
@@ -100,6 +103,24 @@ public class PizzaGuy : MonoBehaviour {
 		moveDirection += fallMove;
 		moveController.Move(moveDirection);
 	}
+
+	public void PickUp() {
+		pizzaCount += 1;
+	}
+
+	public bool CanDeliver() {
+		return pizzaCount > 0;
+	}
+
+	public void Delivered() {
+		pizzaCount -= 1;
+		score += 1;
+	}
+
+	public float DistanceTo(Vector3 otherPos) {
+		return (transform.position - otherPos).magnitude;
+	}
+
 	bool CanShoot()
 	{
 		if (currentGun.name.Equals("Revolver"))
