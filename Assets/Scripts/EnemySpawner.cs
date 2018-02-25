@@ -35,7 +35,6 @@ public class EnemySpawner : MonoBehaviour {
 		go.transform.position = spawnLocations[spawnIndex].position;
 		go.GetComponent<Enemy>().target = pizzaGuy;
 
-		spawnIndex += 1;
-		if(spawnIndex >= spawnLocations.Length) { spawnIndex = 0; }
+		spawnIndex = (int) Random.Range (0, spawnLocations.Length);
 	}
 }
