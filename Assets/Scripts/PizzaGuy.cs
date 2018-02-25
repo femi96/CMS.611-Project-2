@@ -12,6 +12,8 @@ public class PizzaGuy : MonoBehaviour {
 	public float time;
 	public float matchTime = 100;
 
+	public int score;
+
 	// Movement variables:
 	[Header("Movement")]
 	public float speed = 4f;
@@ -21,15 +23,18 @@ public class PizzaGuy : MonoBehaviour {
 
 	private CharacterController moveController;
 	private GameObject model;
-    private GameObject currentGun;
-    public GameObject bulletPrefab;
-    public Transform bulletSpawn;
-    public GameObject pelletPrefab;
-    public Transform[] pelletTransforms;
-    public int numBullets = 5;
-    public int numPellets = 25;
 
-    private Vector3 fallMove = new Vector3(0, -0.1f, 0);
+	// Gun variables:
+	[Header("Gun")]
+	private GameObject currentGun;
+	public GameObject bulletPrefab;
+	public Transform bulletSpawn;
+	public GameObject pelletPrefab;
+	public Transform[] pelletTransforms;
+	public int numBullets = 5;
+	public int numPellets = 25;
+
+	private Vector3 fallMove = new Vector3(0, -0.1f, 0);
 	
 	// UI variables:
 	[Header("UI")]
@@ -41,7 +46,7 @@ public class PizzaGuy : MonoBehaviour {
 		// Get movement componenets
 		moveController = GetComponent<CharacterController>();
 		model = transform.Find("Model").gameObject;
-        currentGun = model.transform.Find("Revolver").gameObject;
+		currentGun = model.transform.Find("Revolver").gameObject;
 	}
 
 	void Start () {
@@ -55,18 +60,19 @@ public class PizzaGuy : MonoBehaviour {
 
 		// Game updates
 		GameUpdate();
-        //print(currentGun.name);
+
 		// Movement updates
 		MoveUpdate();
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SwitchGun();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Fire();
-        }
-    }
+
+		// Guns updates
+		if(Input.GetKeyDown(KeyCode.G)) {
+			SwitchGun();
+		}
+
+		if(Input.GetKeyDown(KeyCode.Space)) {
+			Fire();
+		}
+	}
 
 	// ...
 	void GameUpdate() {
@@ -94,67 +100,67 @@ public class PizzaGuy : MonoBehaviour {
 		moveDirection += fallMove;
 		moveController.Move(moveDirection);
 	}
-    bool CanShoot()
-    {
-        if (currentGun.name.Equals("Revolver"))
-        {
-            return numBullets > 0;
-        } else
-        {
-            return numPellets > 0;
-        }
-    }
-    void Fire()
-    {
-        if (CanShoot())
-        {
-            if (currentGun.name.Equals("Revolver"))
-            {
-                print("Creating Bullet");
-                // Create the Bullet from the Bullet Prefab
-                var bullet = (GameObject)Instantiate(
-                    bulletPrefab,
-                    bulletSpawn.position,
-                    bulletSpawn.rotation);
+	bool CanShoot()
+	{
+		if (currentGun.name.Equals("Revolver"))
+		{
+			return numBullets > 0;
+		} else
+		{
+			return numPellets > 0;
+		}
+	}
+	void Fire()
+	{
+		if (CanShoot())
+		{
+			if (currentGun.name.Equals("Revolver"))
+			{
+				print("Creating Bullet");
+				// Create the Bullet from the Bullet Prefab
+				var bullet = (GameObject)Instantiate(
+					bulletPrefab,
+					bulletSpawn.position,
+					bulletSpawn.rotation);
 
-                // Add velocity to the bullet
-                bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+				// Add velocity to the bullet
+				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
 
-                // Destroy the bullet after 2 seconds
-                Destroy(bullet, 2.0f);
-                numBullets -= 1;
-            } else
-            {
-                print("Creating Pellets");
-                for(int i = 0; i < pelletTransforms.Length; i++)
-                {
-                    var bullet = (GameObject)Instantiate(
-                    pelletPrefab,
-                    pelletTransforms[i].position,
-                    pelletTransforms[i].rotation);
+				// Destroy the bullet after 2 seconds
+				Destroy(bullet, 2.0f);
+				numBullets -= 1;
+			} else
+			{
+				print("Creating Pellets");
+				for(int i = 0; i < pelletTransforms.Length; i++)
+				{
+					var bullet = (GameObject)Instantiate(
+					pelletPrefab,
+					pelletTransforms[i].position,
+					pelletTransforms[i].rotation);
 
-                    // Add velocity to the bullet
-                    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
+					// Add velocity to the bullet
+					bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
 
-                    // Destroy the bullet after 2 seconds
-                    Destroy(bullet, 5.0f);
-                }
-                numPellets -= 1;
-            }
-        }
-    }
-    void SwitchGun()
-    {
-        if(currentGun.name.Equals("Revolver"))
-        {
-            print("Gun is now shotgun");
-            GameObject nextGun = model.transform.Find("Shotgun").gameObject;
-            currentGun = nextGun;
-        } else
-        {
-            print("Gun is now Revolver");
-            GameObject nextGun = model.transform.Find("Revolver").gameObject;
-            currentGun = nextGun;
-        }
-    }
+					// Destroy the bullet after 2 seconds
+					Destroy(bullet, 5.0f);
+				}
+				numPellets -= 1;
+			}
+		}
+	}
+	void SwitchGun()
+	{
+		if(currentGun.name.Equals("Revolver"))
+		{
+			print("Gun is now shotgun");
+			GameObject nextGun = model.transform.Find("Shotgun").gameObject;
+			currentGun = nextGun;
+		} else
+		{
+			print("Gun is now Revolver");
+			GameObject nextGun = model.transform.Find("Revolver").gameObject;
+			currentGun = nextGun;
+		}
+	}
 }

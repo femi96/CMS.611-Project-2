@@ -29,11 +29,10 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	void SpawnEnemy() {
+
 		GameObject go = Instantiate(enemyPrefab);
 		go.transform.parent = transform;
-
 		go.transform.position = spawnLocations[spawnIndex].position;
-
 		go.GetComponent<Enemy>().target = pizzaGuy;
 
 		spawnIndex += 1;
