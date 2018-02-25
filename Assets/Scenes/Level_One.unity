@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -801,6 +801,53 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1001 &160667015
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 432522593}
+    m_Modifications:
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 620a31da881d7b0449ce7d443ba86833, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &160667016 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4450178842647654, guid: 620a31da881d7b0449ce7d443ba86833,
+    type: 2}
+  m_PrefabInternal: {fileID: 160667015}
 --- !u!1 &160909967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,7 +1182,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -1153,7 +1199,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -1643,60 +1688,6 @@ MonoBehaviour:
   uvScale: {x: 1, y: 1}
   uvOffset: {x: 0, y: 0}
   mat: {fileID: 0}
---- !u!1 &227804335
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 227804337}
-  - component: {fileID: 227804338}
-  m_Layer: 0
-  m_Name: HouseSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &227804337
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 227804335}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &227804338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 227804335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 046c8f15573504f4484c4e7391a7444d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTime: 0
-  spawnInterval: 5
-  spawnIndex: 0
-  spawnLocations:
-  - {fileID: 1539249195}
-  - {fileID: 1054246140}
-  - {fileID: 814503423}
-  - {fileID: 1844245156}
-  - {fileID: 583153273}
-  - {fileID: 1871457032}
-  - {fileID: 1220718584}
-  housePrefab: {fileID: 1015286634677894, guid: 620a31da881d7b0449ce7d443ba86833,
-    type: 2}
-  pizzaGuy: {fileID: 2029268522}
 --- !u!1 &233453500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,7 +2037,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 469882, guid: 43928cc264f54974ebcc76d76cbdf2e6, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 457744, guid: 43928cc264f54974ebcc76d76cbdf2e6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -2173,7 +2164,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -2191,7 +2181,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -2777,7 +2766,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -2795,7 +2783,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -3477,6 +3464,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 160667016}
   - {fileID: 1539249195}
   - {fileID: 1054246140}
   - {fileID: 814503423}
@@ -3627,6 +3615,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448161330}
   m_Mesh: {fileID: 4300034, guid: 77ffcebf31620234696176b49645d319, type: 3}
+--- !u!114 &454720953 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114701659149043154, guid: 81fe1dda3860b344c92d91bc60a0c302,
+    type: 2}
+  m_PrefabInternal: {fileID: 1216363959}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &455874083
 Prefab:
   m_ObjectHideFlags: 0
@@ -4247,7 +4241,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -5879,7 +5873,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476322, guid: ee93ae4e907184a4ababba792bae3be4, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee93ae4e907184a4ababba792bae3be4, type: 2}
@@ -5941,7 +5935,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7733c9dc425c91c4a921bcb4d4cf8ecf, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7733c9dc425c91c4a921bcb4d4cf8ecf, type: 3}
       propertyPath: m_Name
@@ -5974,6 +5968,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.8793659, z: 1}
   m_Center: {x: 0, y: 0.43968296, z: 0}
+--- !u!1 &812252854 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1245615370615378, guid: 81fe1dda3860b344c92d91bc60a0c302,
+    type: 2}
+  m_PrefabInternal: {fileID: 1216363959}
 --- !u!43 &814389906
 Mesh:
   m_ObjectHideFlags: 0
@@ -5986,7 +5985,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -6004,7 +6002,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -6141,7 +6138,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -7101,7 +7098,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &986474675 stripped
 Transform:
@@ -7120,7 +7117,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -7138,7 +7134,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -7409,7 +7404,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 09032e1de9da03c4e8ef383fd29b41ce, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 09032e1de9da03c4e8ef383fd29b41ce, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7550,7 +7545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -7575,7 +7570,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -7593,7 +7587,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -9121,7 +9114,7 @@ Prefab:
     - target: {fileID: 224141122064443902, guid: 81fe1dda3860b344c92d91bc60a0c302,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224141122064443902, guid: 81fe1dda3860b344c92d91bc60a0c302,
         type: 2}
@@ -9225,7 +9218,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -9419,6 +9412,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 2029268522}
+  wantPizza: 0
+  pizzaDesire: 0
+  pizzaDesireLimit: 5
+  porchLight: {fileID: 0}
 --- !u!43 &1247197560
 Mesh:
   m_ObjectHideFlags: 0
@@ -9431,7 +9428,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -9449,7 +9445,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -10291,6 +10286,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1324410708}
   m_Mesh: {fileID: 4300000, guid: 99be83d852df01b40beb80de60fd6191, type: 3}
+--- !u!114 &1333768827 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114768809452069238, guid: 81fe1dda3860b344c92d91bc60a0c302,
+    type: 2}
+  m_PrefabInternal: {fileID: 1216363959}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1347178349
 GameObject:
   m_ObjectHideFlags: 0
@@ -11092,7 +11093,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -11110,7 +11110,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -11383,7 +11382,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1488408142
 GameObject:
@@ -11622,7 +11621,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -11938,7 +11937,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -11956,7 +11954,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -12343,7 +12340,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7733c9dc425c91c4a921bcb4d4cf8ecf, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 7733c9dc425c91c4a921bcb4d4cf8ecf, type: 3}
       propertyPath: m_Name
@@ -12522,7 +12519,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d5687245e93d81b43995dc848041aafa, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d5687245e93d81b43995dc848041aafa, type: 3}
       propertyPath: m_LocalScale.y
@@ -12693,6 +12690,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 2029268522}
+  wantPizza: 0
+  pizzaDesire: 0
+  pizzaDesireLimit: 5
+  porchLight: {fileID: 0}
 --- !u!43 &1687296838
 Mesh:
   m_ObjectHideFlags: 0
@@ -12705,7 +12706,6 @@ Mesh:
     firstByte: 0
     indexCount: 6
     topology: 0
-    baseVertex: 0
     firstVertex: 0
     vertexCount: 4
     localAABB:
@@ -12723,7 +12723,6 @@ Mesh:
   m_IsReadable: 1
   m_KeepVertices: 1
   m_KeepIndices: 1
-  m_IndexFormat: 0
   m_IndexBuffer: 000001000200000003000100
   m_Skin: []
   m_VertexData:
@@ -13545,6 +13544,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 2029268522}
+  wantPizza: 0
+  pizzaDesire: 0
+  pizzaDesireLimit: 5
+  porchLight: {fileID: 0}
+--- !u!1 &1790094177 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1940679283128606, guid: 81fe1dda3860b344c92d91bc60a0c302,
+    type: 2}
+  m_PrefabInternal: {fileID: 1216363959}
 --- !u!1 &1791610273 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011868398520, guid: fb28c56cbe98b9944b86dc4658a34987,
@@ -13562,6 +13570,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 2029268522}
+  wantPizza: 0
+  pizzaDesire: 0
+  pizzaDesireLimit: 5
+  porchLight: {fileID: 0}
 --- !u!1 &1809620024 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011868398520, guid: fb28c56cbe98b9944b86dc4658a34987,
@@ -13579,6 +13591,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 2029268522}
+  wantPizza: 0
+  pizzaDesire: 0
+  pizzaDesireLimit: 5
+  porchLight: {fileID: 0}
 --- !u!4 &1817593100 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011260867334, guid: fb28c56cbe98b9944b86dc4658a34987,
@@ -13757,7 +13773,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -14032,7 +14048,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b2d362fe46e6ebc4386cdfce24fef3a4, type: 3}
       propertyPath: m_Name
@@ -14082,7 +14098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 486098, guid: 4ce4260432c13504e9b3f0870856da39, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 486098, guid: 4ce4260432c13504e9b3f0870856da39, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -14859,7 +14875,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7733c9dc425c91c4a921bcb4d4cf8ecf, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7733c9dc425c91c4a921bcb4d4cf8ecf, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15310,7 +15326,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4419403952012330, guid: 29d8c3cfbc6d651479ba78a7ecd14731, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114888461505919548, guid: 29d8c3cfbc6d651479ba78a7ecd14731,
         type: 2}
@@ -15322,6 +15338,26 @@ Prefab:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1216363960}
+    - target: {fileID: 114888461505919548, guid: 29d8c3cfbc6d651479ba78a7ecd14731,
+        type: 2}
+      propertyPath: switchUI
+      value: 
+      objectReference: {fileID: 1790094177}
+    - target: {fileID: 114888461505919548, guid: 29d8c3cfbc6d651479ba78a7ecd14731,
+        type: 2}
+      propertyPath: reloadUI
+      value: 
+      objectReference: {fileID: 812252854}
+    - target: {fileID: 114888461505919548, guid: 29d8c3cfbc6d651479ba78a7ecd14731,
+        type: 2}
+      propertyPath: ammoText
+      value: 
+      objectReference: {fileID: 1333768827}
+    - target: {fileID: 114888461505919548, guid: 29d8c3cfbc6d651479ba78a7ecd14731,
+        type: 2}
+      propertyPath: gunNameText
+      value: 
+      objectReference: {fileID: 454720953}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 29d8c3cfbc6d651479ba78a7ecd14731, type: 2}
   m_IsPrefabParent: 0
@@ -15629,6 +15665,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 2029268522}
+  wantPizza: 0
+  pizzaDesire: 0
+  pizzaDesireLimit: 5
+  porchLight: {fileID: 0}
 --- !u!1001 &2039447607
 Prefab:
   m_ObjectHideFlags: 0
@@ -15721,7 +15761,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 492236, guid: 8d4fe3f7d1efff343815bd6ad1823ff2, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4767160701212996, guid: 8d4fe3f7d1efff343815bd6ad1823ff2, type: 2}
       propertyPath: m_LocalPosition.x
