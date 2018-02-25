@@ -37,6 +37,11 @@ public class PizzaGuy : MonoBehaviour {
 	[Header("UI")]
 	public Text timer;
 	public Text scoreText;
+	public Text gunNameText;
+	public Text ammoText;
+
+	public GameObject reloadUI;
+	public GameObject switchUI;
 
 
 	void Awake () {
@@ -76,6 +81,11 @@ public class PizzaGuy : MonoBehaviour {
 
 		timer.text = Mathf.CeilToInt(time).ToString();
 		scoreText.text = Mathf.CeilToInt(score).ToString();
+		ammoText.text = guns[currentGunIndex].GetAmmoText();
+		gunNameText.text = guns[currentGunIndex].gunName;
+
+		reloadUI.SetActive(!guns[currentGunIndex].CanShoot());
+		switchUI.SetActive(pizzaCount <= 0);
 	}
 
 	// Moves pizzaguy each frame
@@ -106,6 +116,7 @@ public class PizzaGuy : MonoBehaviour {
 
 	public void PickUp() {
 		pizzaCount += 1;
+		currentGunIndex = 0;
 	}
 
 	public bool CanDeliver() {
@@ -123,9 +134,22 @@ public class PizzaGuy : MonoBehaviour {
 	}
 
 	void SwitchGun() {
-		currentGunIndex += 1;
-		if(currentGunIndex > 1) {
+		if(pizzaCount > 0) {
 			currentGunIndex = 0;
+			return;
+		}
+
+		currentGunIndex += 1;
+		if(currentGunIndex >= guns.Length) {
+			currentGunIndex = 0;
+		}
+
+		foreach(Gun gun in guns) {
+			if(guns[currentGunIndex] == gun) {
+				gun.gameObject.SetActive(true);
+			} else {
+				gun.gameObject.SetActive(false);
+			}
 		}
 	}
 }

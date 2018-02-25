@@ -25,8 +25,16 @@ public class Gun : MonoBehaviour {
 		
 	}
 	
-	bool CanShoot() {
+	public bool CanShoot() {
 		return ammo > 0;
+	}
+
+	public void Reload() {
+		ammo = capacity;
+	}
+
+	public string GetAmmoText() {
+		return ""+ammo+"/"+capacity;
 	}
 
 	public void Fire() {
@@ -47,9 +55,5 @@ public class Gun : MonoBehaviour {
 				ammo -= 1;
 			}
 		}
-	}
-
-	public void Reload() {
-		ammo = capacity;
 	}
 }

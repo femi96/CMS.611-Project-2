@@ -649,7 +649,7 @@ MonoBehaviour:
   - {fileID: 4830089876784734}
   gunName: Shotgun
   bulletSpeed: 10
-  capacity: 10
+  capacity: 15
   ammo: 0
   reloadTime: 0
   time: 0
@@ -678,6 +678,9 @@ MonoBehaviour:
   currentGunIndex: 0
   timer: {fileID: 0}
   scoreText: {fileID: 0}
+  gunNameText: {fileID: 0}
+  ammoText: {fileID: 0}
+  reloadUI: {fileID: 0}
 --- !u!114 &114953765763769958
 MonoBehaviour:
   m_ObjectHideFlags: 1
