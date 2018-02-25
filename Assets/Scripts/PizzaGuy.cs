@@ -26,17 +26,12 @@ public class PizzaGuy : MonoBehaviour {
 	private CharacterController moveController;
 	private GameObject model;
 
+	private Vector3 fallMove = new Vector3(0, -0.1f, 0);
+
 	// Gun variables:
 	[Header("Gun")]
-	public GameObject currentGun;
-	public GameObject bulletPrefab;
-	public Transform bulletSpawn;
-	public GameObject pelletPrefab;
-	public Transform[] pelletTransforms;
-	public int numBullets = 5;
-	public int numPellets = 25;
-
-	private Vector3 fallMove = new Vector3(0, -0.1f, 0);
+	public Gun[] guns;
+	public int currentGunIndex;
 	
 	// UI variables:
 	[Header("UI")]
@@ -68,13 +63,9 @@ public class PizzaGuy : MonoBehaviour {
 		MoveUpdate();
 
 		// Guns updates
-		if(Input.GetKeyDown(KeyCode.G)) {
-			SwitchGun();
-		}
-
-		if(Input.GetKeyDown(KeyCode.Space)) {
-			Fire();
-		}
+		if(Input.GetKeyDown(KeyCode.G)) { SwitchGun(); }
+		if(Input.GetKeyDown(KeyCode.Space)) { guns[currentGunIndex].Fire(); }
+		if(Input.GetKeyDown(KeyCode.R)) { guns[currentGunIndex].Reload(); }
 	}
 
 	// ...
@@ -131,67 +122,10 @@ public class PizzaGuy : MonoBehaviour {
 		return (transform.position - otherPos).magnitude;
 	}
 
-	bool CanShoot()
-	{
-		if (currentGun.name.Equals("Revolver"))
-		{
-			return numBullets > 0;
-		} else
-		{
-			return numPellets > 0;
-		}
-	}
-	void Fire()
-	{
-		if (CanShoot())
-		{
-			if (currentGun.name.Equals("Revolver"))
-			{
-				print("Creating Bullet");
-				// Create the Bullet from the Bullet Prefab
-				var bullet = (GameObject)Instantiate(
-					bulletPrefab,
-					bulletSpawn.position,
-					bulletSpawn.rotation);
-
-				// Add velocity to the bullet
-				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
-
-				// Destroy the bullet after 2 seconds
-				Destroy(bullet, 2.0f);
-				numBullets -= 1;
-			} else
-			{
-				print("Creating Pellets");
-				for(int i = 0; i < pelletTransforms.Length; i++)
-				{
-					var bullet = (GameObject)Instantiate(
-					pelletPrefab,
-					pelletTransforms[i].position,
-					pelletTransforms[i].rotation);
-
-					// Add velocity to the bullet
-					bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 10;
-
-					// Destroy the bullet after 2 seconds
-					Destroy(bullet, 5.0f);
-				}
-				numPellets -= 1;
-			}
-		}
-	}
-	void SwitchGun()
-	{
-		if(currentGun.name.Equals("Revolver"))
-		{
-			print("Gun is now shotgun");
-			GameObject nextGun = model.transform.Find("Shotgun").gameObject;
-			currentGun = nextGun;
-		} else
-		{
-			print("Gun is now Revolver");
-			GameObject nextGun = model.transform.Find("Revolver").gameObject;
-			currentGun = nextGun;
+	void SwitchGun() {
+		currentGunIndex += 1;
+		if(currentGunIndex > 1) {
+			currentGunIndex = 0;
 		}
 	}
 }

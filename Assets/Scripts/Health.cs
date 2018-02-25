@@ -11,7 +11,7 @@ public class Health : MonoBehaviour {
 	public bool dead = false;
 
 	public void TakeDamage(int amount) {
-		
+
 		currentHealth -= amount;
 		if (currentHealth <= 0) {
 			currentHealth = 0;
