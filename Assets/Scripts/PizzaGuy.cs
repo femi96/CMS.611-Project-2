@@ -97,6 +97,12 @@ public class PizzaGuy : MonoBehaviour {
 			count += 1;
 			pizzaStack.SetActive(count <= pizzaCount);
 		}
+		count = 0;
+		foreach(GameObject pizzaStack in pizzaStacksUI) {
+
+			count += 1;
+			pizzaStack.SetActive(count <= pizzaCount);
+		}
 	}
 
 	// Moves pizzaguy each frame
