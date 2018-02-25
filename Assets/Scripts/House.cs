@@ -15,6 +15,7 @@ public class House : MonoBehaviour {
 
 			if(pizzaGuy.CanDeliver()) {
 				pizzaGuy.Delivered();
+				Destroy(gameObject);
 			}
 		}
 	}

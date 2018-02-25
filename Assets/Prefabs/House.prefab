@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4450178842647654}
-  - component: {fileID: 65007974397987674}
+  - component: {fileID: 114386036394524408}
   m_Layer: 0
   m_Name: House
   m_TagString: Untagged
@@ -35,8 +35,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4169529444965488}
-  - component: {fileID: 33297800024902046}
   - component: {fileID: 23302009688669692}
+  - component: {fileID: 122104454984837602}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -80,7 +80,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -105,22 +105,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33297800024902046
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411006195406142}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65007974397987674
-BoxCollider:
+--- !u!114 &114386036394524408
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1015286634677894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7afe3d05880a346a74fc2b23bc4c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pizzaGuy: {fileID: 0}
+--- !u!122 &122104454984837602
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411006195406142}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4285316066
+  m_Size: 3
