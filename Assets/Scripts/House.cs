@@ -38,7 +38,7 @@ public class House : MonoBehaviour {
 		if(pizzaGuy.CanDeliver() && wantPizza) {
 
 			pizzaGuy.Delivered();
-			pizzaDesire = -Random.Range(5, 15);
+			pizzaDesire = -Random.Range(0, 10);
 		}
 
 	}

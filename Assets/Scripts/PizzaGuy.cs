@@ -43,6 +43,9 @@ public class PizzaGuy : MonoBehaviour {
 	public GameObject reloadUI;
 	public GameObject switchUI;
 
+	public GameObject[] pizzaStacks;
+	public GameObject[] pizzaStacksUI;
+
 
 	void Awake () {
 
@@ -56,6 +59,7 @@ public class PizzaGuy : MonoBehaviour {
 		// Set game variables to starting value
 		time = matchTime;
 		score = 0;
+		SwitchGun();
 	}
 	
 	void Update () {
@@ -80,12 +84,19 @@ public class PizzaGuy : MonoBehaviour {
 		if(time < 0) { time = 0; }
 
 		timer.text = Mathf.CeilToInt(time).ToString();
-		scoreText.text = Mathf.CeilToInt(score).ToString();
+		scoreText.text = "$"+Mathf.CeilToInt(score*5).ToString();
 		ammoText.text = guns[currentGunIndex].GetAmmoText();
 		gunNameText.text = guns[currentGunIndex].gunName;
 
 		reloadUI.SetActive(!guns[currentGunIndex].CanShoot());
 		switchUI.SetActive(pizzaCount <= 0);
+
+		int count = 0;
+		foreach(GameObject pizzaStack in pizzaStacks) {
+
+			count += 1;
+			pizzaStack.SetActive(count <= pizzaCount);
+		}
 	}
 
 	// Moves pizzaguy each frame
@@ -116,7 +127,7 @@ public class PizzaGuy : MonoBehaviour {
 
 	public void PickUp() {
 		pizzaCount += 1;
-		currentGunIndex = 0;
+		SwitchGun();
 	}
 
 	public bool CanDeliver() {
@@ -135,13 +146,14 @@ public class PizzaGuy : MonoBehaviour {
 
 	void SwitchGun() {
 		if(pizzaCount > 0) {
-			currentGunIndex = 0;
-			return;
-		}
 
-		currentGunIndex += 1;
-		if(currentGunIndex >= guns.Length) {
 			currentGunIndex = 0;
+		} else {
+
+			currentGunIndex += 1;
+			if(currentGunIndex >= guns.Length) {
+				currentGunIndex = 0;
+			}
 		}
 
 		foreach(Gun gun in guns) {
