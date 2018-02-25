@@ -81,6 +81,7 @@ public class PizzaGuy : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.G)) { SwitchGun(); }
 		if(Input.GetKeyDown(KeyCode.Space)) { guns[currentGunIndex].Fire(); }
 		if(Input.GetKeyDown(KeyCode.R)) { guns[currentGunIndex].Reload(); }
+		if(Input.GetKeyDown(KeyCode.O)) { Application.LoadLevel(Application.loadedLevel); }
 	}
 
 	// ...
