@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GameState { Menu, Running, Defeat }
+public enum GameState { Main, Paused, Playing, Defeat, Victory }

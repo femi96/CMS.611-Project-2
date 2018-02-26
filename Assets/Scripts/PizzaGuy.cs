@@ -9,6 +9,9 @@ public class PizzaGuy : MonoBehaviour {
 
 	// Game variables:
 	[Header("Game")]
+	public GameState gameState;
+	public GameState gameStatePrevious;
+
 	public float time;
 	public float matchTime = 100;
 
@@ -38,8 +41,20 @@ public class PizzaGuy : MonoBehaviour {
 	public Gun[] guns;
 	public int currentGunIndex;
 	
-	// UI variables:
-	[Header("UI")]
+	[Header("GameStateUI")]
+	public GameObject canvas;
+
+	private GameObject playingUI;
+	private GameObject pausedUI;
+	private GameObject mainUI;
+	private GameObject defeatUI;
+	private GameObject victoryUI;
+	
+	[Header("EndUI")]
+	public Text victoryText;
+	public Text defeatText;
+
+	[Header("PlayUI")]
 	public Text timer;
 	public Text scoreText;
 	public Text gunNameText;
@@ -60,11 +75,20 @@ public class PizzaGuy : MonoBehaviour {
 		// Get movement componenets
 		moveController = GetComponent<CharacterController>();
 		model = transform.Find("Model").gameObject;
+
+		playingUI = canvas.transform.Find("PlayingUI").gameObject;
+		pausedUI = canvas.transform.Find("PausedUI").gameObject;
+		mainUI = canvas.transform.Find("MainUI").gameObject;
+		defeatUI = canvas.transform.Find("DefeatUI").gameObject;
+		victoryUI = canvas.transform.Find("VictoryUI").gameObject;
 	}
 
 	void Start () {
 
 		// Set game variables to starting value
+		gameState = GameState.Main;
+		gameStatePrevious = GameState.Defeat;
+
 		time = matchTime;
 		score = 0;
 		SwitchGun();
@@ -74,23 +98,32 @@ public class PizzaGuy : MonoBehaviour {
 		// Called every frame
 
 		// Game updates
+		if(gameStatePrevious != gameState) {
+			GameStateChanged();
+		}
+
 		GameUpdate();
 
 		// Movement updates
 		MoveUpdate();
 
-		// Guns updates
-		if(Input.GetKeyDown(KeyCode.G)) { SwitchGun(); }
-		if(Input.GetKeyDown(KeyCode.Space)) { guns[currentGunIndex].Fire(); }
-		if(Input.GetKeyDown(KeyCode.R)) { guns[currentGunIndex].Reload(); }
+		// Input updates
+		if(gameState == GameState.Playing) {
+			if(Input.GetKeyDown(KeyCode.G)) { SwitchGun(); }
+			if(Input.GetKeyDown(KeyCode.Space)) { guns[currentGunIndex].Fire(); }
+			if(Input.GetKeyDown(KeyCode.R)) { guns[currentGunIndex].Reload(); }
+		}
+
 		if(Input.GetKeyDown(KeyCode.O)) { Application.LoadLevel(Application.loadedLevel); }
+		if(Input.GetKeyDown(KeyCode.P)) { TogglePaused(); }
+		if(Input.GetKeyDown(KeyCode.Space) && gameState == GameState.Main) { gameState = GameState.Playing; }
 	}
 
 	// ...
 	void GameUpdate() {
 
 		time -= Time.deltaTime;
-		if(time < 0) { time = 0; }
+		if(time < 0) { time = 0; gameState = GameState.Victory; }
 
 		swipeTime += Time.deltaTime;
 
@@ -105,6 +138,8 @@ public class PizzaGuy : MonoBehaviour {
 		int health = gameObject.GetComponent<Health>().currentHealth;
 		healthText.text = health.ToString() + "%";
 		healthBar.GetComponent<RectTransform>().sizeDelta = new Vector2(3*health, 100);
+
+		if(health <= 0) { gameState = GameState.Defeat; }
 
 		int count = 0;
 		foreach(GameObject pizzaStack in pizzaStacks) {
@@ -207,5 +242,35 @@ public class PizzaGuy : MonoBehaviour {
 			knockback = knockback.normalized * 0.5f;
 			moveController.Move(knockback);
 		}
+	}
+
+	void TogglePaused() {
+
+		if(gameState == GameState.Playing) {
+			gameState = GameState.Paused;
+		}
+		if(gameState == GameState.Paused) {
+			gameState = GameState.Playing;
+		}
+	}
+
+	void GameStateChanged() {
+		gameStatePrevious = gameState;
+		if(gameState == GameState.Playing) {
+			Time.timeScale = 1;
+		} else {
+			Time.timeScale = 0;
+		}
+
+		playingUI.SetActive(gameState == GameState.Playing || gameState == GameState.Paused);
+		pausedUI.SetActive(gameState == GameState.Paused);
+
+		mainUI.SetActive(gameState == GameState.Main);
+		defeatUI.SetActive(gameState == GameState.Defeat);
+		victoryUI.SetActive(gameState == GameState.Victory);
+
+
+		victoryText.text = "Congrats!\nYou survived with $"+(score*5).ToString()+" :D";
+		defeatText.text = "R.I.P.\nYou died with $"+(score*5).ToString()+" :(";
 	}
 }
