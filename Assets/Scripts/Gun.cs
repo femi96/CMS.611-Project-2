@@ -33,7 +33,11 @@ public class Gun : MonoBehaviour {
 	}
 	
 	public bool CanShoot() {
-		return ammo > 0 && !source.isPlaying;
+		return !source.isPlaying && isEmpty();
+	}
+
+	public bool isEmpty() {
+		return ammo > 0;
 	}
 
 	public void Reload() {
