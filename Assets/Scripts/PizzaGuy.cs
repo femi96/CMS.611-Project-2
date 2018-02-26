@@ -69,8 +69,14 @@ public class PizzaGuy : MonoBehaviour {
 	public GameObject[] pizzaStacks;
 	public GameObject[] pizzaStacksUI;
 
+    [Header("Sounds")]
+    public AudioClip pizzaUpSound;
+    public AudioClip pizzaDownSound;
 
-	void Awake () {
+    private AudioSource source;
+
+
+    void Awake () {
 
 		// Get movement componenets
 		moveController = GetComponent<CharacterController>();
@@ -81,6 +87,7 @@ public class PizzaGuy : MonoBehaviour {
 		mainUI = canvas.transform.Find("MainUI").gameObject;
 		defeatUI = canvas.transform.Find("DefeatUI").gameObject;
 		victoryUI = canvas.transform.Find("VictoryUI").gameObject;
+        source = GetComponent<AudioSource>();
 	}
 
 	void Start () {
@@ -191,6 +198,7 @@ public class PizzaGuy : MonoBehaviour {
 
 	public void PickUp() {
 		pizzaCount += 1;
+        source.PlayOneShot(pizzaUpSound, 0.5f);
 		SwitchGun();
 	}
 
@@ -204,6 +212,7 @@ public class PizzaGuy : MonoBehaviour {
 		houseCount -= 1;
 		housesInPlay -= 1;
 		score += 1;
+        source.PlayOneShot(pizzaDownSound, 0.5f);
 	}
 
 	public float DistanceTo(Vector3 otherPos) {
