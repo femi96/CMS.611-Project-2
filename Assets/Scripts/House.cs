@@ -8,11 +8,16 @@ public class House : MonoBehaviour {
 
 	public static float deliverDistance = 1.5f;
 
-	public bool wantPizza;
+	public bool OnTimer = false;
+	public bool wantPizza = false;
 	public float pizzaDesire;
 	public float pizzaDesireLimit = 5;
 
 	public GameObject porchLight;
+
+	public void setDesire(bool desire){
+		wantPizza = desire;
+	}
 
 	void Start() {
 		pizzaDesire = -Random.Range(-5, 5);
@@ -20,8 +25,10 @@ public class House : MonoBehaviour {
 
 	void Update() {
 
-		pizzaDesire += Time.deltaTime;
-		wantPizza = pizzaDesire >= pizzaDesireLimit;
+		if (OnTimer) {
+			pizzaDesire += Time.deltaTime;
+			wantPizza = pizzaDesire >= pizzaDesireLimit;
+		}
 
 		porchLight.SetActive(wantPizza);
 
@@ -31,13 +38,13 @@ public class House : MonoBehaviour {
 		}
 	}
 
-
 	// Try is bad but whatever
 	void TryDeliverPizza() {
 
 		if(pizzaGuy.CanDeliver() && wantPizza) {
 
 			pizzaGuy.Delivered();
+			wantPizza = false;
 			pizzaDesire = -Random.Range(0, 10);
 		}
 

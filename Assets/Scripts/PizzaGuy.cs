@@ -13,8 +13,10 @@ public class PizzaGuy : MonoBehaviour {
 	public float matchTime = 100;
 
 	public int score;
-	public int pizzaCount;
-	public int pizzasInPlay;
+	public int pizzaCount = 0;
+	public int pizzasInPlay = 0;
+	public int houseCount = 0;
+	public int housesInPlay = 0;
 
 	private float swipeTime;
 	private float swipeTimeout = 1;
@@ -140,8 +142,16 @@ public class PizzaGuy : MonoBehaviour {
 		return pizzasInPlay < pizzaLimit;
 	}
 
+	public bool CanHouse(int houseLimit) {
+		return housesInPlay < houseLimit;
+	}
+
 	public void SpawnedPizza() {
 		pizzasInPlay += 1;
+	}
+
+	public void SetHouse() {
+		housesInPlay += 1;
 	}
 
 	public void PickUp() {
@@ -156,6 +166,8 @@ public class PizzaGuy : MonoBehaviour {
 	public void Delivered() {
 		pizzaCount -= 1;
 		pizzasInPlay -= 1;
+		houseCount -= 1;
+		housesInPlay -= 1;
 		score += 1;
 	}
 

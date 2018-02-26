@@ -11,7 +11,7 @@ public class PizzaSpawner : MonoBehaviour {
 	public float spawnTime;
 	public float spawnInterval = 5;
 	public int spawnIndex = 0;
-	public static int pizzaLimit = 1;
+	public static int pizzaLimit = 3;
 	public Transform[] spawnLocations;
 	public GameObject pizzaPrefab;
 	public PizzaGuy pizzaGuy;

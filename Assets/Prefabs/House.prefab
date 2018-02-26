@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4076314876429600}
   - component: {fileID: 108511297556841948}
   m_Layer: 0
-  m_Name: Point light
+  m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4076314876429600
 Transform:
   m_ObjectHideFlags: 1
@@ -208,7 +208,7 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
+  m_DrawHalo: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -269,7 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pizzaGuy: {fileID: 0}
+  OnTimer: 0
   wantPizza: 0
   pizzaDesire: 0
   pizzaDesireLimit: 5
-  porchLight: {fileID: 1091902796382956}
+  porchLight: {fileID: 1382852313757000}
