@@ -16,7 +16,13 @@ public class Enemy : MonoBehaviour {
 	[Header("Movement")]
 	public float speed = 2f;
 
-	private CharacterController moveController;
+    [Header("Sounds")]
+    public AudioClip deathSound;
+    public AudioClip growlSound;
+
+    private AudioSource source;
+
+    private CharacterController moveController;
 	private GameObject model;
 
 	private Vector3 fallMove = new Vector3(0, -5f, 0);
@@ -27,7 +33,8 @@ public class Enemy : MonoBehaviour {
 		// Get movement componenets
 		moveController = GetComponent<CharacterController>();
 		model = transform.Find("Model").gameObject;
-	}
+        source = GetComponent<AudioSource>();
+    }
 	
 	void Update () {
 		// Called every frame
@@ -47,8 +54,13 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	// Moves enemy each frame
-	void MoveUpdate() {
+    void Start()
+    {
+        source.PlayOneShot(growlSound, 0.01f);
+    }
+
+    // Moves enemy each frame
+    void MoveUpdate() {
 
 		Vector3 moveDirection = Vector3.zero;
 

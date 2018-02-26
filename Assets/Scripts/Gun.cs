@@ -7,7 +7,13 @@ public class Gun : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public Transform[] bulletSpawns;
 
-	public string gunName;
+    [Header("Sounds")]
+    public AudioClip shotSound;
+    public AudioClip reloadSound;
+
+    private AudioSource source;
+
+    public string gunName;
 
 	public float bulletSpeed;
 
@@ -19,19 +25,21 @@ public class Gun : MonoBehaviour {
 
 	void Start() {
 		ammo = capacity;
-	}
+        source = GetComponent<AudioSource>();
+    }
 	
 	void Update() {
 		
 	}
 	
 	public bool CanShoot() {
-		return ammo > 0;
+		return ammo > 0 && !source.isPlaying;
 	}
 
 	public void Reload() {
-		ammo = capacity;
-	}
+        ammo = capacity;
+        source.PlayOneShot(reloadSound, 0.5f);
+    }
 
 	public string GetAmmoText() {
 		return ""+ammo+"/"+capacity;
@@ -47,8 +55,9 @@ public class Gun : MonoBehaviour {
 						bulletSpawn.position,
 						bulletSpawn.rotation);
 
-				// Add velocity to the bullet
-				bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
+                // Add velocity to the bullet
+                source.PlayOneShot(shotSound, 0.5f);
+                bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletSpeed;
 
 				// Destroy the bullet after 2 seconds
 				Destroy(bullet, 2.0f);
