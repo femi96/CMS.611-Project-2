@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/HouseSpawner.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/PizzaGuy.cs">
     <Files>
-      <File FileName="Assets/Scripts/HouseSpawner.cs" Line="45" Column="3" />
-      <File FileName="Assets/Scripts/EnemySpawner.cs" Line="38" Column="60" />
+      <File FileName="Assets/Scripts/House.cs" Line="22" Column="16" />
+      <File FileName="Assets/Scripts/PizzaGuy.cs" Line="112" Column="15" />
+      <File FileName="Assets/Scripts/PizzaSpawner.cs" Line="22" Column="30" />
+      <File FileName="Assets/Scripts/HouseSetter.cs" Line="24" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
