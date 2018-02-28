@@ -69,14 +69,25 @@ public class PizzaGuy : MonoBehaviour {
 	public GameObject[] pizzaStacks;
 	public GameObject[] pizzaStacksUI;
 
-    [Header("Sounds")]
-    public AudioClip pizzaUpSound;
-    public AudioClip pizzaDownSound;
+	[Header("Sounds")]
+	public AudioClip pizzaUpSound;
+	public AudioClip pizzaDownSound;
 
-    private AudioSource source;
+	private AudioSource source;
+
+	[Header("TutorialUI")]
+	private GameObject tutor;
+
+	private GameObject tutorW;
+	private GameObject tutorA;
+	private GameObject tutorS;
+	private GameObject tutorD;
+	private GameObject tutorSpace;
+	private GameObject tutorPizza;
+	private GameObject tutorDeliver;
 
 
-    void Awake () {
+	void Awake () {
 
 		// Get movement componenets
 		moveController = GetComponent<CharacterController>();
@@ -87,7 +98,18 @@ public class PizzaGuy : MonoBehaviour {
 		mainUI = canvas.transform.Find("MainUI").gameObject;
 		defeatUI = canvas.transform.Find("DefeatUI").gameObject;
 		victoryUI = canvas.transform.Find("VictoryUI").gameObject;
-        source = GetComponent<AudioSource>();
+
+		source = GetComponent<AudioSource>();
+
+		tutor = playingUI.transform.Find("TutorialUI").gameObject;
+
+		tutorW = tutor.transform.Find("W").gameObject;
+		tutorA = tutor.transform.Find("A").gameObject;
+		tutorS = tutor.transform.Find("S").gameObject;
+		tutorD = tutor.transform.Find("D").gameObject;
+		tutorSpace = tutor.transform.Find("Space").gameObject;
+		tutorPizza = tutor.transform.Find("Pizza").gameObject;
+		tutorDeliver = tutor.transform.Find("Deliver").gameObject;
 	}
 
 	void Start () {
@@ -117,7 +139,7 @@ public class PizzaGuy : MonoBehaviour {
 		// Input updates
 		if(gameState == GameState.Playing) {
 			if(Input.GetKeyDown(KeyCode.G)) { SwitchGun(); }
-			if(Input.GetKeyDown(KeyCode.Space)) { guns[currentGunIndex].Fire(); }
+			if(Input.GetKeyDown(KeyCode.Space)) { tutorSpace.SetActive(false); guns[currentGunIndex].Fire(); }
 			if(Input.GetKeyDown(KeyCode.R)) { guns[currentGunIndex].Reload(); }
 		}
 
@@ -168,7 +190,10 @@ public class PizzaGuy : MonoBehaviour {
 		inputX = Input.GetAxis("Horizontal");
 		inputZ = Input.GetAxis("Vertical");
 
-		// See if vector magnitude is >1 and limit if so
+		if(inputX > 0) { tutorD.SetActive(false); }
+		if(inputX < 0) { tutorA.SetActive(false); }
+		if(inputZ > 0) { tutorW.SetActive(false); }
+		if(inputZ < 0) { tutorS.SetActive(false); }
 
 		Vector3 moveDirection = new Vector3(inputX, 0, inputZ);
 		moveDirection *= speed;
@@ -197,8 +222,9 @@ public class PizzaGuy : MonoBehaviour {
 	}
 
 	public void PickUp() {
+		tutorPizza.SetActive(false);
 		pizzaCount += 1;
-        source.PlayOneShot(pizzaUpSound, 0.5f);
+		source.PlayOneShot(pizzaUpSound, 0.5f);
 		SwitchGun();
 	}
 
@@ -207,12 +233,13 @@ public class PizzaGuy : MonoBehaviour {
 	}
 
 	public void Delivered() {
+		tutorDeliver.SetActive(false);
 		pizzaCount -= 1;
 		pizzasInPlay -= 1;
 		houseCount -= 1;
 		housesInPlay -= 1;
 		score += 1;
-        source.PlayOneShot(pizzaDownSound, 0.5f);
+		source.PlayOneShot(pizzaDownSound, 0.5f);
 	}
 
 	public float DistanceTo(Vector3 otherPos) {
