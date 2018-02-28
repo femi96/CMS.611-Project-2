@@ -438,6 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 2
+  deathSound: {fileID: 0}
+  growlSound: {fileID: 8300000, guid: 706a89d28394f41448acbb1f82d71959, type: 3}
 --- !u!114 &114192292572597726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,7 +467,7 @@ CharacterController:
   m_Height: 1
   m_Radius: 0.4
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

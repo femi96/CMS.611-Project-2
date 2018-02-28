@@ -1624,7 +1624,6 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   gunNameText: {fileID: 0}
   ammoText: {fileID: 0}
-  reloadUI: {fileID: 0}
   switchUI: {fileID: 0}
   healthText: {fileID: 0}
   healthBar: {fileID: 0}
@@ -1653,7 +1652,7 @@ MonoBehaviour:
     type: 2}
   bulletSpawns:
   - {fileID: 4210117205824318}
-  shotSound: {fileID: 8300000, guid: 0a9abfc0d384f6d43a1c5b354bc43129, type: 3}
+  shotSound: {fileID: 8300000, guid: 03d720d8800e0a04d950b892b2660c14, type: 3}
   reloadSound: {fileID: 8300000, guid: 449761aeba67ec747ad10303b96b0a4c, type: 3}
   gunName: Revolver
   bulletSpeed: 6

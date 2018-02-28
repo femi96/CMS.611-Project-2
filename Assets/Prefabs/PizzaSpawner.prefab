@@ -52,8 +52,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTime: 0
-  spawnInterval: 5
+  spawnInterval: 7
   spawnIndex: 0
-  spawnLocations: []
-  pizzaPrefab: {fileID: 0}
+  spawnLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  pizzaPrefab: {fileID: 1507163762012644, guid: 97071390eebb71247931f93dc44cb4a6,
+    type: 2}
   pizzaGuy: {fileID: 0}
