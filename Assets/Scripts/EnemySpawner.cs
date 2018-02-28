@@ -9,7 +9,10 @@ public class EnemySpawner : MonoBehaviour {
 	// Spawns variables:
 	[Header("Spawns")]
 	public float spawnTime;
-	public float spawnInterval = 2;
+	public float spawnInterval;
+	public float spawnIntervalMin = 3;
+	public float spawnIntervalX = 10;
+	public float spawnScale = 3;
 	public int spawnIndex = 0;
 	public Transform[] spawnLocations;
 	public GameObject enemyPrefab;
@@ -25,6 +28,7 @@ public class EnemySpawner : MonoBehaviour {
 	void Update () {
 
 		spawnTime += Time.deltaTime;
+		spawnInterval = spawnIntervalMin + Mathf.Pow(spawnIntervalX,1/(1 + pizzaGuy.GetComponent<PizzaGuy>().score/spawnScale));
 		if(spawnTime > spawnInterval) { SpawnEnemy(); spawnTime -= spawnInterval; }
 	}
 

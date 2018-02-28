@@ -239,6 +239,7 @@ public class PizzaGuy : MonoBehaviour {
 		houseCount -= 1;
 		housesInPlay -= 1;
 		score += 1;
+		time += 3;
 		source.PlayOneShot(pizzaDownSound, 0.5f);
 	}
 
