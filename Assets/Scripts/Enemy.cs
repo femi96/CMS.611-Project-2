@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour {
 	}
 
     void Start() {
-    	if(growlSound != null){ source.PlayOneShot(growlSound, 0.01f); }
+    	if(source != null){ source.PlayOneShot(growlSound, 0.01f); }
     }
 
     // Moves enemy each frame
