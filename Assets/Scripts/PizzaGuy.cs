@@ -60,7 +60,7 @@ public class PizzaGuy : MonoBehaviour {
 	public Text gunNameText;
 	public Text ammoText;
 
-	public GameObject reloadUI;
+	// public GameObject reloadUI;
 	public GameObject switchUI;
 
 	public Text healthText;
@@ -139,7 +139,7 @@ public class PizzaGuy : MonoBehaviour {
 		ammoText.text = guns[currentGunIndex].GetAmmoText();
 		gunNameText.text = guns[currentGunIndex].gunName;
 
-		reloadUI.SetActive(!guns[currentGunIndex].isEmpty());
+		// reloadUI.SetActive(!guns[currentGunIndex].isEmpty());
 		switchUI.SetActive(pizzaCount <= 0);
 
 		int health = gameObject.GetComponent<Health>().currentHealth;
