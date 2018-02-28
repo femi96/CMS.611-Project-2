@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 2
-  deathSound: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: b73b1858a6b5d2a4194c2dcd8e528d72, type: 3}
   growlSound: {fileID: 8300000, guid: 706a89d28394f41448acbb1f82d71959, type: 3}
 --- !u!114 &114192292572597726
 MonoBehaviour:
